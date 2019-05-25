@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.mycompany.app.PrimeNumbersTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.028 s <<< FAILURE! - in com.mycompany.app.PrimeNumbersTest
+showPrimeNumbersUntil_100  Time elapsed: 0.013 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]> but was: <[2, 3, 5, 7, 11, 13, 17, 23, 31, 37, 41, 43, 47, 53, 61, 67, 71, 73, 83, 97, 101, 103, 107, 113, 127]>
+	at com.mycompany.app.PrimeNumbersTest.showPrimeNumbersUntil_100(PrimeNumbersTest.java:41)
+

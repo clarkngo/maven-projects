@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.mycompany.app.AppTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.03 s <<< FAILURE! - in com.mycompany.app.AppTest
+findTwo  Time elapsed: 0.011 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <-1> but was: <0>
+	at com.mycompany.app.AppTest.findTwo(AppTest.java:28)
+
+twoPositives  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <2>
+	at com.mycompany.app.AppTest.twoPositives(AppTest.java:73)
+
