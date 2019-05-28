@@ -8,6 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println(PatternIndexA.patternIndex("0000ll", "ll"));
+        System.out.println(PatternIndexB.patternIndex("0000ll", "ll"));
     }
 }

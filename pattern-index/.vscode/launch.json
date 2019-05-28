@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - PatternIndexB",
+      "request": "launch",
+      "mainClass": "com.mycompany.app.PatternIndexB",
+      "projectName": "pattern-index"
+    }
+  ]
+}
