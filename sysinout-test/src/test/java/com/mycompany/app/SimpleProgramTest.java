@@ -5,24 +5,29 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class SimpleProgramTest {
     private final InputStream systemIn = System.in;
-    private final PrintStream systemOut = System.out;
+    private static final PrintStream systemOut = System.out;
 
     private ByteArrayInputStream testIn;
     private ByteArrayOutputStream testOut;
 
-    @BeforeAll
+    @BeforeEach
     public void setUpOutput() {
         testOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOut));
+    }
+
+    @AfterEach
+    public void restoreSystemInputOutput() {
+        System.setIn(systemIn);
+        System.setOut(systemOut);
     }
 
     private void provideInput(String data) {
@@ -30,23 +35,40 @@ public class SimpleProgramTest {
         System.setIn(testIn);
     }
 
-    private String getOutput() {
-        return testOut.toString();
-    }
+    // private String getOutput() {
+    //     return testOut.toString();
+    // }
 
-    @AfterAll
-    public void restoreSystemInputOutput() {
-        System.setIn(systemIn);
-        System.setOut(systemOut);
+    // @Test
+    // public void testCase1() {
+    //     final String testString = "Hello!";
+    //     provideInput(testString);
+
+    //     SimpleProgram.main(new String[0]);
+
+    //     assertEquals(testString, getOutput());
+    // }
+
+    @Test
+    public void testSingleInput() {
+        String expected = "Hello!";
+
+        String input = "Hello!";
+        provideInput(input);
+        SimpleProgram.singleInput();
+
+        assertEquals(expected, testOut.toString());
     }
 
     @Test
-    public void testCase1() {
-        final String testString = "Hello!";
-        provideInput(testString);
+    public void testMultipleInputs() {
+        String expected = "HelloTheWorld!";
 
-        SimpleProgram.main(new String[0]);
+        // Use System.lineSeparator() to add multiple inputs
+        String input = "Hello" + System.lineSeparator() + "The" + System.lineSeparator() + "World!";
+        provideInput(input);
+        SimpleProgram.multipleInputs();
 
-        assertEquals(testString, getOutput());
+        assertEquals(expected, testOut.toString());
     }
 }
