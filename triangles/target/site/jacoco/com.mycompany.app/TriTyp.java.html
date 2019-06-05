@@ -9,7 +9,7 @@
 
 import java.io.*;
 
-<span class="nc" id="L12">public class TriTyp</span>
+<span class="fc" id="L12">public class TriTyp</span>
 {
 <span class="fc" id="L14">   private static String[] triTypes = { &quot;&quot;, // Ignore 0.</span>
       &quot;scalene&quot;, &quot;isosceles&quot;, &quot;equilateral&quot;, &quot;not a valid triangle&quot;};
@@ -20,17 +20,17 @@ public static void main (String[] argv)
    int A, B, C;
    int T;
 
-<span class="nc" id="L23">   System.out.println (instructions);</span>
-<span class="nc" id="L24">   System.out.println (&quot;Enter side 1: &quot;);</span>
-<span class="nc" id="L25">   A = getN();</span>
-<span class="nc" id="L26">   System.out.println (&quot;Enter side 2: &quot;);</span>
-<span class="nc" id="L27">   B = getN();</span>
-<span class="nc" id="L28">   System.out.println (&quot;Enter side 3: &quot;);</span>
-<span class="nc" id="L29">   C = getN();</span>
-<span class="nc" id="L30">   T = triang (A, B, C);</span>
+<span class="fc" id="L23">   System.out.println (instructions);</span>
+<span class="fc" id="L24">   System.out.println (&quot;Enter side 1: &quot;);</span>
+<span class="fc" id="L25">   A = getN();</span>
+<span class="fc" id="L26">   System.out.println (&quot;Enter side 2: &quot;);</span>
+<span class="fc" id="L27">   B = getN();</span>
+<span class="fc" id="L28">   System.out.println (&quot;Enter side 3: &quot;);</span>
+<span class="fc" id="L29">   C = getN();</span>
+<span class="fc" id="L30">   T = triang (A, B, C);</span>
 
-<span class="nc" id="L32">   System.out.println (&quot;Result is: &quot; + triTypes[T]);</span>
-<span class="nc" id="L33">}</span>
+<span class="fc" id="L32">   System.out.println (&quot;Result is: &quot; + triTypes[T]);</span>
+<span class="fc" id="L33">}</span>
 
 // ====================================
 // The main triangle classification method
@@ -76,16 +76,16 @@ public static int triang (int Side1, int Side2, int Side3)
    // Confirm it's a valid triangle before declaring
    // it to be isosceles or equilateral
 
-<span class="pc bpc" id="L79" title="1 of 2 branches missed.">   if (triOut &gt; 3)</span>
-<span class="nc" id="L80">      triOut = 3;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">   if (triOut &gt; 3)</span>
+<span class="fc" id="L80">      triOut = 3;</span>
 <span class="pc bpc" id="L81" title="1 of 4 branches missed.">   else if (triOut == 1 &amp;&amp; Side1+Side2 &gt; Side3)</span>
 <span class="fc" id="L82">      triOut = 2;</span>
 <span class="pc bpc" id="L83" title="1 of 4 branches missed.">   else if (triOut == 2 &amp;&amp; Side1+Side3 &gt; Side2)</span>
 <span class="fc" id="L84">      triOut = 2;</span>
-<span class="pc bpc" id="L85" title="2 of 4 branches missed.">   else if (triOut == 3 &amp;&amp; Side2+Side3 &gt; Side1)</span>
+<span class="pc bpc" id="L85" title="1 of 4 branches missed.">   else if (triOut == 3 &amp;&amp; Side2+Side3 &gt; Side1)</span>
 <span class="fc" id="L86">      triOut = 2;</span>
    else
-<span class="nc" id="L88">      triOut = 4;</span>
+<span class="fc" id="L88">      triOut = 4;</span>
 <span class="fc" id="L89">   return (triOut);</span>
 } // end Triang
 
@@ -107,9 +107,9 @@ public static int getN ()
    {
 <span class="nc" id="L108">      System.out.println (&quot;Could not read input, choosing 1.&quot;);</span>
    }
-<span class="nc" id="L110">   catch (NumberFormatException e)</span>
+<span class="fc" id="L110">   catch (NumberFormatException e)</span>
    {
-<span class="nc" id="L112">      System.out.println (&quot;Entry must be a number, choosing 1.&quot;);</span>
+<span class="fc" id="L112">      System.out.println (&quot;Entry must be a number, choosing 1.&quot;);</span>
 <span class="pc" id="L113">   }</span>
 
 <span class="fc" id="L115">   return (inputInt);</span>

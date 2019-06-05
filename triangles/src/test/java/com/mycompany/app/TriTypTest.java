@@ -1,23 +1,44 @@
 package com.mycompany.app;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit test for simple App.
  */
-public class TriTypTest  
+public class TriTypTest  extends TriTyp
 {  
   /**
   * Tests for triang()  
   **/
 
-  // Negative Nums
+  // Diff Nums makes scalene triangle
+  @Test
+  public void diffNums_returnsOne() {
+    int expected = 1;
+    int actual = TriTyp.triang(4, 2, 5);
+    assertEquals(expected, actual);
+  }
+
+  // All Same Nums makes equilateral triangle
+  @Test
+  public void allSameNums_returnsThree() {
+    int expected = 3;
+    int actual = TriTyp.triang(2, 2, 2);
+    assertEquals(expected, actual);
+  }
+
+  // Negative Nums makes invalid triangle
   @Test
   public void negativeNum_param1_returnsFour() {
     int expected = 4;
@@ -37,7 +58,7 @@ public class TriTypTest
     assertEquals(expected, actual);
   }    
 
-  // Two Same Nums
+  // Two Same Nums makes isosceles
   @Test
   public void twoSameNums_combination1_returnsTwo() {
     int expected = 2;
@@ -148,4 +169,47 @@ public class TriTypTest
     System.setIn(stdin);//restore the stardard in
   }
 
+  private final InputStream systemIn = System.in;
+  private static final PrintStream systemOut = System.out;
+
+  private ByteArrayInputStream testIn;
+  private ByteArrayOutputStream testOut;
+
+  @BeforeEach
+  public void setUpOutput() {
+      testOut = new ByteArrayOutputStream();
+      System.setOut(new PrintStream(testOut));
+  }
+
+  @AfterEach
+  public void restoreSystemInputOutput() {
+      System.setIn(systemIn);
+      System.setOut(systemOut);
+  }
+
+  private void provideInput(String data) {
+      testIn = new ByteArrayInputStream(data.getBytes());
+      System.setIn(testIn);
+  }
+  
+  /**
+   * Test user inputs
+  */
+  @Test
+  public void testEmptyUserInput_equilateral() {
+    String input = "";
+    provideInput(input);
+    String[] test = {};
+    TriTyp.main(test);
+    assertTrue(testOut.toString().contains("Result is: equilateral"));
+  }
+
+  @Test
+  public void testNegativeNumberUserInput_notAValidTriangle() {
+    String input = "-1";
+    provideInput(input);
+    String[] test = {};
+    TriTyp.main(test);
+    assertTrue(testOut.toString().contains("Result is: not a valid triangle"));
+  }
 }
